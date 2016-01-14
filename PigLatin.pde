@@ -12,19 +12,22 @@ public void draw()
 }
 public int findFirstVowel(String sWord)
 {
-  int koe = -1;
+    String kuro = "aeiou";
     for (int umi = 0; umi < sWord.length(); umi++)
-    if (sWord.substring(umi,umi+1).equals("a"))
-        return umi;
-      else if (sWord.substring(umi,umi+1).equals("e"))
-        return umi;
-      else if (sWord.substring(umi,umi+1).equals("i"))
-        return umi;
-      else if (sWord.substring(umi,umi+1).equals("o"))
-        return umi;
-      else if (sWord.substring(umi,umi+1).equals("u"))
-        return umi;
-   	return koe;
+    {
+    	for (int miyu = 0; miyu < kuro.length(); miyu++)
+    	{
+    		if (sWord.substring(umi,umi+1).equals(kuro.substring(miyu,miyu+1)))
+    		{
+    			return umi; //returning index
+    		}
+    		return -1;
+    	}
+    }
+    if (sWord.substring(0,2).equals("qu"))
+    {
+    	return 1;
+    }
 }
 
 public String pigLatin(String sWord)
@@ -33,6 +36,14 @@ public String pigLatin(String sWord)
 	if(findFirstVowel(sWord) == -1)
 	{
 		return sWord + "ay";
+	}
+	else if (findFirstVowel(sWord) == 0)
+	{
+		return sWord + "way";
+	}
+	else if (findFirstVowel(sWord) == 2)
+	{
+		//add the qu rule
 	}
 	else
 	{
